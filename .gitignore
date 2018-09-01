@@ -3,6 +3,8 @@
 
 ### Eclipse ###
 
+*.mp4
+*.mkv
 .metadata
 bin/
 tmp/
