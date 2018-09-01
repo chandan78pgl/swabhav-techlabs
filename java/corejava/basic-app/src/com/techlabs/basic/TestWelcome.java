@@ -2,6 +2,12 @@ package com.techlabs.basic;
 
 public class TestWelcome {
 	public static void main(String[] args){
-		System.out.println("Hello World");
+		
+		int i,k;
+		k=args.length;
+		for(i=0;i<k;i++)
+		{
+			System.out.println("Hello "+args[i]+"...!!!");
+		}
 	}
 }
