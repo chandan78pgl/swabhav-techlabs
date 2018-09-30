@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>NumbersApi Example</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/moment-with-locales.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <header class="text-center">
+    <h1>Welcome to Numbers Api</h1>
+  </header>
+  <section class="container">
+    <div class="form-group">
+      <label for="number">Enter a Number: </label>
+      <input type="number" class="form-control" name="number" id="number" placeholder="Enter a Number">
+    </div>
+    <div>
+      <button id="data_btn" class="btn btn-primary">Get Data</button>
+      <button id="clear_btn" class="btn btn-danger">Clear Data</button>
+    </div>
+  </section>
+  <section>
+    <div class="container mt-2">
+      <ul id="data">
+
+      </ul>
+    </div>
+  </section>
+
+  <script>
+
+    var value;
+
+    var ApiData = function () {
+      var _api_data = [];
+      var obj = {};
+
+      obj.storeApiData = function (num, text) {
+        var data = {
+          _req_number: num,
+          _req_text: text,
+          _req_time: moment().format("ddd, hh:mm:ss a")
+        };
+        if (api_data) {
+          api_data.push(data);
+        }
+      };
+
+      obj.getApiData = function () {
+        return api_data;
+      };
+
+      obj.setApiData = function (api_data) {
+        _api_data = api_data;
+      }
+      return obj;
+    }();
+
+
+    $(document).ready(function () {
+      $("#data_btn").click(function () {
+        $("#data_btn").slideUp("slow").prop("disabled", true);
+        value = $("#number").val();
+        $("#number").val("");
+        if (value == "") {
+          throw "Enter a Number.";
+        } else {
+          $.ajax({
+            url: "http://numbersapi.com/" + value,
+
+            success: function (result) {
+              console.log(result);
+              ApiData.storeApiData(value, result);
+              storeToLocal(ApiData.getApiData());
+              getLocalData();
+            }
+          });
+        }
+
+      });
+
+      $("#number").focusin(function () {
+        $("#data_btn").slideDown("slow").prop("disabled", false);
+      });
+
+      $("#clear_btn").click(function () {
+        localStorage.clear();
+        getLocalData();
+      });
+    });
+
+    function storeToLocal(data) {
+      if (typeof (Storage) !== "undefined") {
+        localStorage.setItem("swabhavtechlabs", JSON.stringify(data));
+      }
+    }
+
+    function getLocalData() {
+      if (typeof (Storage) !== "undefined") {
+        api_data = JSON.parse(localStorage.getItem("swabhavtechlabs"));
+        if (api_data == null) {
+          ApiData.setApiData([]);
+        }else{
+          ApiData.setApiData(api_data);
+        }
+        $("#data").empty();
+        displayData(ApiData.getApiData());
+      }
+    }
+
+    function displayData(api_data) {
+      if (api_data.length > 0) {
+        for (var i = 0; i < api_data.length; i++) {
+          var data = api_data[i];
+          $("#data").prepend("<li>" + data._req_number + " - " + data._req_text + " <b>- " + data._req_time + "</b></li>");
+        }
+      } else {
+        $("#data").prepend("<li> No Data</li>");
+      }
+    }
+
+    (function () {
+      getLocalData();
+      console.log(moment().format("MM ddd, YYYY hh:mm:ss a"));
+    })();
+
+  </script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

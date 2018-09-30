@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Question bank Example</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
+</head>
+
+<body>
+
+  <header>
+    <h1>Welcome to Question Bank</h1>
+  </header>
+  <section id="question_section">
+    <h2>Question Section </h2>
+    <h1 id="question"></h1>
+    <div id="" class="container m-5">
+      <div>
+        <input type="radio" id="option1" name="option" onclick="enable()">
+        <label id="optionlabel1" for="option1" name="optionlabel"></label>
+      </div>
+      <div>
+        <input type="radio" id="option2" name="option" onclick="enable()">
+        <label id="optionlabel2" for="option2" name="optionlabel"></label>
+      </div>
+
+      <div>
+        <input type="radio" id="option3" name="option" onclick="enable()">
+        <label id="optionlabel3" for="option3" name="optionlabel"></label>
+      </div>
+
+      <div>
+        <input type="radio" id="option4" name="option" onclick="enable()">
+        <label id="optionlabel4" for="option4" name="optionlabel"></label>
+      </div>
+    </div>
+  </section>
+
+  <div class="text-center">
+    <button id="next_btn" class="btn btn-primary" onclick="next()">Next</button>
+    <button id="result_btn" class="btn btn-secondary" onclick="generateResult()" style="display:none">Generate Result</button>
+  </div>
+
+  <section id="answer_section">
+    <h2>Answer Section</h2>
+    <p id="answers"></p>
+    <h5>Correct Answers are: </h5>
+    <pre id="correctanswers"></pre>
+    <p id="correctpercentage"></p>
+
+    <figure class="text-center">
+      <h3>Answer Canvas</h3>
+      <div class="d-flex justify-content-center">
+        <div style="height: 10px;width: 10px;background-color:green"></div>
+        <small>PASS</small>
+        <div style="height: 10px;width: 10px;background-color:red"></div>
+        <small>FAIL</small>
+      </div>
+      <canvas id="mycanvas" width=600px height=600px style="border: 1px solid #b3b3b3"></canvas>
+    </figure>
+
+  </section>
+  <footer class="text-center">
+    <h2 id="teststatus"></h2>
+  </footer>
+  <script>
+    var questionElement = $("#question");
+    var answers = [];
+    var corrects = [];
+    var percentage;
+    var testStatus = false;
+    var radios = $("input[name=option]");
+    var index = 1;
+
+    var questionArray = [{
+      qId: 1,
+      qDescription: "Who is the national animal?",
+      qOptions: ["lion", "tiger", "elephant", "monkey"],
+      qAnswer: function () {
+        return this.qOptions[1];
+      }
+    }, {
+      qId: 2,
+      qDescription: "What is square root of 81?",
+      qOptions: ["2", "3", "9", "7"],
+      qAnswer: function () {
+        return this.qOptions[2];
+      }
+    }, {
+      qId: 3,
+      qDescription: "What is the sum of 24+36?",
+      qOptions: ["20", "65", "80", "60"],
+      qAnswer: function () {
+        return this.qOptions[3];
+      }
+    }, {
+      qId: 4,
+      qDescription: "What is cube root of 64?",
+      qOptions: ["4", "3", "9", "7"],
+      qAnswer: function () {
+        return this.qOptions[0];
+      }
+    }, {
+      qId: 5,
+      qDescription: "What is the product of 3*4?",
+      qOptions: ["10", "13", "12", "34"],
+      qAnswer: function () {
+        return this.qOptions[2];
+      }
+    }
+    ];
+
+    (() => {
+      showQuestion(0);
+      $("#next_btn").prop("disabled", true);
+      $("#answer_section").css("display", "none");
+    })();
+
+
+    function next() {
+      $("#next_btn").prop("disabled", true);
+      if (answers.length < questionArray.length) {
+        updateAnswer();
+      }
+
+      if (index < questionArray.length) {
+        showQuestion(index);
+        index++;
+      } else {
+        $("#result_btn").css("display", "inline");
+        $("#next_btn").remove();
+      }
+    }
+
+    function enable() {
+      $("#next_btn").prop("disabled", false);
+    }
+
+    function showQuestion(index) {
+      questionElement.html(questionArray[index].qId + ". " + questionArray[index].qDescription);
+      createOptions(index);
+    }
+
+    function createOptions(index) {
+
+      radios[0].value= questionArray[index].qOptions[0];
+      radios[1].value=questionArray[index].qOptions[1];
+      radios[2].value=questionArray[index].qOptions[2];
+      radios[3].value=questionArray[index].qOptions[3];
+
+      //radios[1].value = questionArray[index].qOptions[1];
+
+      var radiolabels = $("label[name=optionlabel]");
+      radiolabels[0].innerHTML=questionArray[index].qOptions[0];
+      radiolabels[1].innerHTML=questionArray[index].qOptions[1];
+      radiolabels[2].innerHTML=questionArray[index].qOptions[2];
+      radiolabels[3].innerHTML=questionArray[index].qOptions[3];
+      //radiolabels[1].innerHTML = questionArray[index].qOptions[1];
+    }
+
+    function updateAnswer() {
+      for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+          console.log(radios[i].checked, radios[i].value);
+          answers.push(radios[i].value);
+          radios[i].checked=false;
+        }
+      }
+    }
+
+    function displayAnswers() {
+      $("#answers").html(answers);
+      $("#correctanswers").html(corrects + "\nyou have got " + percentage + "%");
+
+      if (testStatus) {
+        $("#teststatus").html("Congratulation You Have PASSED the exam")
+          .css("color", "green");
+      }
+      else {
+        $("#teststatus").html("Sorry You Have FAILED the exam")
+          .css("color", "red");
+      }
+    }
+
+    function generateResult() {
+      $("#answer_section").css("display","inline");
+      for (var i = 0; i < answers.length; i++) {
+
+        if (answers[i] == questionArray[i].qAnswer()) {
+          corrects.push("Question " + questionArray[i].qId + ": = " + answers[i]);
+        }
+      }
+
+      percentage = (corrects.length / questionArray.length) * 100;
+
+      if (percentage >= 50) {
+        testStatus = true;
+      }
+
+      displayAnswers();
+      createCanvas();
+      $("#question_section").css("display","none");
+      $("#result_btn").prop("disabled",true);
+    }
+
+    function createCanvas() {
+      var mycan = document.getElementById("mycanvas");
+      var cfr = mycan.getContext("2d");
+      cfr.fillStyle = "green";
+      function drawpie(cfx, x, y, radius, angle1, angle2) {
+        cfx.beginPath();
+        cfx.moveTo(x, y);
+
+        cfx.arc(x, y, radius, 2 * Math.PI * angle1 / 100, 2 * Math.PI * angle2 / 100);
+
+        cfx.fill();
+      }
+      drawpie(cfr, 300, 300, 200, 0, percentage);
+      cfr.fillStyle = "red";
+      drawpie(cfr, 300, 300, 200, percentage, 100);
+    }
+
+  </script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

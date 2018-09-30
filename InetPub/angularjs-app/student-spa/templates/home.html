@@ -1,0 +1,26 @@
+<section class="container">
+    <table class="table">
+        <tr>
+            <th>Roll No.</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat="x in allStudents track by $index">
+            <td>{{x.rollNo}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.age}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.date}}</td>
+            <td>
+                <a href="#edit" class="badge badge-info" ng-click="curr_student(x)">Edit</a>
+                <a href="#/" class="badge badge-danger" ng-click="del_student(x)">Delete</a>
+            </td>
+        </tr>
+    </table>
+</section>
+<section class="text-center m-2">
+    <a href="#/add" class="btn btn-primary">Add Student</a>
+</section>

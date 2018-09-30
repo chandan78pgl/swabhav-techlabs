@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Number Api Example</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="js/angular.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+
+    <style>
+        table{
+            width:100%;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section ng-app="numberApp" ng-controller="numberAppController">
+        <div class="text-center">
+            <label for="number_input">Number: </label>
+            <input type="number" ng-model="num" placeholder="Enter number">
+            <button ng-click="getFact()" class="btn btn-primary">Search Fact</button>
+        </div>
+        <div class="container">
+            <table>
+                <tr>
+                    <th width="70px">Sr. No.</th>
+                    <th>Fact</th>
+                </tr>
+                <tr ng-repeat="x in results track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{x}}</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <script>
+
+        (function () {
+            angular
+                .module('numberApp', [])
+                .factory('Dataservice', function ($log, $http) {
+                    $log.info("inside DataService");
+
+                    var obj = {};
+
+                    obj.getData = function (value) {
+                        return $http.get("http://numbersapi.com/" + value);
+                    };
+                    return obj;
+                })
+                .controller('numberAppController', function ($scope, Dataservice) {
+                    $scope.num;
+                    $scope.results = [];
+                    $scope.getFact = function () {
+                        if ($scope.num != null) {
+                            Dataservice.getData($scope.num)
+                                .then((response) => {
+                                    $scope.results.push(response.data);
+                                    console.log(response.data);
+                                });
+                        }
+                    };
+                });
+
+        }());
+
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Multi Binding Example</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="js/angular.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header class="text-center">
+        <h1>Welcome to Multi Binder Example</h1>
+    </header>
+    <section ng-app="bindingApp" ng-controller="bindingController">
+        <section>
+            <h4>Model Section</h4>
+            <div>
+                <label for="text_input">Text: </label>
+                <input ng-model="text" id="text_input" type="text" placeholder="Enter Text">
+            </div>
+            <div>
+                <label for="fontsize_input">Font Size: </label>
+                <input ng-model="fontsize" id="fontsize_input" type="text" placeholder="Enter size" ng-blur="changeText()">
+            </div>
+            <div>
+                <label for="bg_color">Background Color: </label>
+                <select ng-model="selectedBgColorOption" ng-options="x for x in bgColorOptions" ng-change="changeText()" name="bgcolor" id="bg_color"></select>
+            </div>
+            <div>
+                <label for="font_color">Font Color: </label>
+                <select ng-model="selectedFontColorOption" ng-options="x for x in fontColorOptions" ng-change="changeText()" name="fontcolor"
+                    id="font_color"></select>
+            </div>
+            <div>
+                <label for="font_family">Font Family: </label>
+                <select ng-model="selectedFontFamilyOption" ng-options="x for x in fontFamilyOptions" ng-change="changeText()" name="fontfamily"
+                    id="font_family"></select>
+            </div>
+
+        </section>
+        <section>
+            <h4>Display Section</h4>
+            <h5 ng-style="textcss">Text: {{text}}
+            </h5>
+        </section>
+    </section>
+
+    <script>
+        (function () {
+            angular
+                .module('bindingApp', [])
+                .controller('bindingController', function ($scope, $rootScope) {
+                    console.log("Inside Controller");
+                    $scope.bgColorOptions = ["red", "blue", "lightgreen"];
+                    $scope.fontColorOptions = ["green", "orange"];
+                    $scope.fontFamilyOptions = ["verdana", "calibri", "times new roman", "arial"];
+                    $scope.changeText = function () {
+                        $scope.textcss = {
+                            "background-color": $scope.selectedBgColorOption,
+                            "color": $scope.selectedFontColorOption,
+                            "font-size": $scope.fontsize + "px",
+                            "font-family": $scope.selectedFontFamilyOption
+                        };
+                    };
+                });
+        }());
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

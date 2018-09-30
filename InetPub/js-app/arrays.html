@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Arrays</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1 align="center">We will see some method and property of arrays. <br> </h1>
+    <h3>This is the example of array which uses numbered indexes</h3>
+
+    <form action="#">
+        <label for="items">Item: </label>
+        <input id="itm" type="text" placeholder="items" >
+    </form>
+
+    <button onclick="add()" type="button">add to array</button>
+    <button onclick="rem()" type="button">Remove Element</button>
+    <button onclick="join_array()">Join</button>
+
+    <p id="test"></p>
+    <p id="test3"></p>
+    <h3>This is the example of object which uses named indexes</h3>
+    <p id="test2"></p>
+
+
+
+
+<script>
+    var arr1 = ["Fruit","Vegetables","Cars","Homes"];
+    var arr2 = {fname: "Chandan", lname: "Maharana", company: "Hitech projects PVT LTD"};
+    var text = "",text2 = "";
+    var i;
+    
+    document.getElementById("test").innerHTML=arr1;
+    // here we will se different methods of array object.
+
+    function add(){
+        var item = document.getElementById("itm");
+        if(item.value){
+            arr1.push(item.value);
+        }
+        
+        document.getElementById("test").innerHTML=arr1;
+        item.value="";
+    }
+
+    function rem(){
+        arr1.pop();
+        document.getElementById("test").innerHTML=arr1;
+    }
+
+    function join_array(){
+        document.getElementById("test").innerHTML=arr1.join(" * ");
+    }
+    //this is the example of object with named indexes.
+    for(i in arr2){
+        text2 += arr2[i]+"<br>";
+    }
+
+    
+    document.getElementById("test2").innerHTML=text2;
+</script>
+</body>
+</html>

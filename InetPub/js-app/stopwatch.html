@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Stop Watch</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  </head>
+  <style>
+
+    body{
+        background-color: black;
+    }
+      header,footer{
+          
+          padding: 10px;
+          text-align: center;
+          color: white;
+      }
+
+      button{
+        margin: 20px;
+        padding: 10px;
+        width: 100px;
+      }
+
+      section{
+        background-color: white;
+      }
+
+      h1{
+          text-align: center;
+      }
+  </style>
+  <body>
+
+    <header>
+        <h1>This is a StopWatch page</h1>
+        <nav class="nav-group">
+            <button class="btn btn-primary" onclick="start()">Start</button>
+            <button class="btn btn-danger" onclick="stop()">Stop</button>
+            <button class="btn btn-secondary" onclick="reset()">Reset</button>
+            <button class="btn btn-info" onclick="lap()">Lap</button>
+            <button class="btn btn-dark" onclick="reset_lap()">Reset Lap</button>
+        </nav>
+    </header>
+
+    <section id="time_display">
+        <h2 id="d-time" class="text-center" style="font-family:verdana;font-size:150px;">00:00:00:00</h2>
+    </section>
+    <footer id="lap-display"></footer>
+
+    <script>
+        var seconds=0,minutes=0,hours=0,milliseconds=0;
+        var time="",t;
+        
+        function add(){
+            milliseconds++;
+            if(milliseconds>=99){
+                milliseconds=0;
+                seconds++;
+                if(seconds>=60){
+                    seconds=0;
+                    minutes++;
+                    if(minutes>=60){
+                        minutes=0;
+                        hours++;
+                    }
+                }   
+            }
+
+            time=(hours ? (hours>9 ? hours : "0"+hours):"00")+":"+(minutes?(minutes>9?minutes:"0"+minutes):"00")+":"+(seconds?(seconds>9?seconds:"0"+seconds):"00")+":"+(milliseconds?(milliseconds>9?milliseconds:"0"+milliseconds):"00");
+            document.getElementById("d-time").innerHTML=time;
+        }
+
+
+        function start(){
+            if(!stop()){
+                t=setInterval(add,10);
+            }
+        }
+
+        function stop(){
+            clearTimeout(t);
+        }
+
+        function reset(){
+            document.getElementById("d-time").innerHTML="00:00:00:00";
+            seconds=0;minutes=0;hours=0;milliseconds=0;
+            time="";
+            stop();
+        }
+
+        function lap(){
+            if(time!=""){
+                var lap_display=document.createElement("h1");
+                var lap_text=document.createTextNode(time);
+                lap_display.appendChild(lap_text);
+                document.getElementById("lap-display").appendChild(lap_display);
+            }
+        }
+
+        function reset_lap(){
+            var list=document.getElementById("lap-display");
+            while(list.hasChildNodes()){
+                list.removeChild(list.firstChild);
+            }
+        }
+    </script>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  </body>
+</html>

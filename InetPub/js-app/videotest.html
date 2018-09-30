@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Video Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    
+</head>
+<body>
+    <div align="center" style="text-align:center;margin-bottom: 40dp;">
+        <h1>Chandan Maharana</h1>
+        <button onclick="playmusic()" type="button">PLAY / PAUSE</button>
+        <button onclick="smallsize()" type="button">Small</button>
+        <button onclick="mediumsize()" type="button">Medium</button>
+        <button onclick="largesize()" type="button">Large</button>
+    </div>
+    <div align="center">
+    <video id="myvideo" controls>
+        <source src="videos/Animals.mp4" type="video/mp4">
+    </video>
+    </div>
+    <script>
+            var vid = document.getElementById("myvideo");
+            function playmusic(){
+                if(vid.paused)
+                {
+                    vid.play();
+                }
+                else{
+                    vid.pause();
+                }
+            };
+
+            function smallsize(){
+                vid.width = 250;
+            };
+
+            function mediumsize(){
+                vid.width = 450;
+            };
+
+            function largesize(){
+                vid.width = 800;
+            };
+    </script>
+</body>
+</html>

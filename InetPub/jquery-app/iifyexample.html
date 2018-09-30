@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+    iffe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div style="text-align:center">
+        <h1>Chandan Maharana</h1>
+    </div>
+    <p>this is the iffe repeat from function keyword-------------></p>
+    <p id="cnt" align="center"></p>
+    <p>this is the function without function keyword-------------></p>
+    <p id="cnt2" align="center"></p>
+    <p>this is another function without function keyword--------------></p>
+    <p id="cnt3" align="center"></p>
+
+    <script>
+        var value = (function (){
+            var i = 3;
+            return i;
+            })();
+
+        var value2 = (()=>{
+            var j = 4;
+            return j;
+        })();
+
+        var value3 = {
+            show(){
+                var k = 5;
+                return k;
+            }
+        }
+        var value4=value3.show();
+
+        $("#cnt").html(value + " is the value invoked from the IFFE funtion");
+        $("#cnt2").html(value2 + " is the value invoked without function keyowrd");
+        $("#cnt3").html(value4 + " is another value involed withour function keyword");
+    </script>
+</body>
+</html>
