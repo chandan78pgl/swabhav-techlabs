@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>About</title>
+</head>
+<body>
+    <div>
+        @for (int i = 0; i < 5; i++)
+        {
+            <h3>Hello, @i</h3>
+        }
+    </div>
+    
+    <h1>Company Name: @ViewBag.Company</h1>
+</body>
+</html>
