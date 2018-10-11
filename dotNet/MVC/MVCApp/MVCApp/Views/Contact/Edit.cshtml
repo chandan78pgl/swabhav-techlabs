@@ -1,0 +1,38 @@
+﻿@using MVCApp.Models.Contact;
+@model EditVM
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Edit", "Contact", FormMethod.Post))
+        {
+            <div>
+                Id: @Html.TextBoxFor((m) => m.Id,new { disabled=true})
+            </div>
+            <div>
+                Enter Number: @Html.TextBoxFor((m) => m.ContactNo)
+            </div>
+            <div>
+                Enter First Name: @Html.TextBoxFor((m) => m.FName)
+            </div>
+            <div>
+                Enter Last Name: @Html.TextBoxFor((m) => m.LName)
+            </div>
+            <div>
+                Enter Email: @Html.TextBoxFor((m) => m.Email)
+            </div>
+            <input type="submit" value="Edit Contact" />
+        }
+    </div>
+</body>
+</html>

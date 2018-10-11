@@ -1,0 +1,42 @@
+﻿@using EmpDeptMasterPageApp.Models.DepartmentModel
+@model DepartmentVM
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+
+<section>
+    <h2>This is Department Index</h2>
+    <div>
+        @Html.ActionLink("Add","Add","Department")
+        @Html.ActionLink("Display","Index","Department")
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Department Id</th>
+                    <th>name</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var department in Model.Departments)
+                {
+                    <tr>
+                        <td>@department.Id</td>
+                        <td>@department.DName</td>
+                        <td>@department.Location</td>
+                        <td>@department.Description</td>
+                        <td>@Html.ActionLink("Edit","Edit",new { id = @department.Id},new { @class = "badge badge-primary"})</td>
+                        <td>@Html.ActionLink("ViewEmployee", "ViewEmployee", new { id = @department.Id })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+

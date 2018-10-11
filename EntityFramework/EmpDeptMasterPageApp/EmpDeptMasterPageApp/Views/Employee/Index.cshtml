@@ -1,0 +1,49 @@
+﻿@using EmpDeptMasterPageApp.Models.EmployeeModel
+@model EmployeeVM
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+<section>
+    <h2>This is Employee Index</h2>
+    <div>
+        @Html.ActionLink("Add", "Add", "Employee")
+        @Html.ActionLink("Display", "Index", "Employee")
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Employee Id</th>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>Manager</th>
+                    <th>Hire Date</th>
+                    <th>Salary</th>
+                    <th>Commission</th>
+                    <th>Department Id</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model.Employees)
+                {
+                    <tr>
+                        <td>@employee.Id</td>
+                        <td>@employee.EmpName</td>
+                        <td>@employee.EmpJob</td>
+                        <td>@employee.EmpMGR</td>
+                        <td>@employee.EmpHireDate</td>
+                        <td>@employee.EmpSalary</td>
+                        <td>@employee.EmpComm</td>
+                        <td>@employee.EmpDepartment.Id</td>
+                        <td>@Html.ActionLink("Edit", "Edit", new { id = @employee.Id },new { @class="badge"})</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+

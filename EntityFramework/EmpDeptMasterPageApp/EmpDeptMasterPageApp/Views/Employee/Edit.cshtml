@@ -1,0 +1,49 @@
+﻿@using EmpDeptMasterPageApp.Models.EmployeeModel
+@model EditVM
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+<section>
+    <h2>This is Edit Page</h2>
+    @using (Html.BeginForm("Edit", "Employee", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>Employee Id: </td>
+                <td>@Model.Id</td>
+            </tr>
+            <tr>
+                <td>Enter Name: </td>
+                <td>@Html.TextBoxFor((a) => a.EmpName)</td>
+            </tr>
+            <tr>
+                <td>Enter Job: </td>
+                <td>@Html.TextBoxFor((a) => a.EmpJob)</td>
+            </tr>
+            <tr>
+                <td>Enter Manager: </td>
+                <td>@Html.TextBoxFor((a) => a.EmpMGR)</td>
+            </tr>
+            <tr>
+                <td>Enter HireDate: </td>
+                <td>@Html.TextBoxFor((a) => a.EmpHireDate)</td>
+            </tr>
+            <tr>
+                <td>Enter Salary: </td>
+                <td>@Html.TextBoxFor((a) => a.EmpSalary)</td>
+            </tr>
+            <tr>
+                <td>Enter Commission: </td>
+                <td>@Html.TextBoxFor((a) => a.EmpComm)</td>
+            </tr>
+            <tr>
+                <td>Select Department: </td>
+                <td>@Html.DropDownListFor((a) => a.SelectedDepartment, new SelectList(Model.Departments, "Id", "DName"))</td>
+            </tr>
+        </table>
+        <input type="submit" value="Update Employee" />
+    }
+</section>
+
+

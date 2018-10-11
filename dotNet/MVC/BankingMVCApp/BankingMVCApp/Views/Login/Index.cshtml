@@ -1,0 +1,30 @@
+﻿@using BankingMVCApp.Models.LoginModel;
+
+@model LoginVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+<section>
+    <h2>This is Login Index</h2>
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <th>Account No: </th>
+                <td>@Html.TextBoxFor((l) => l.AccountNo)</td>
+                <td>@Html.ValidationMessageFor((l) => l.AccountNo, "", new { @class = "error" })</td>
+            </tr>
+            <tr>
+                <th>Password: </th>
+                <td>@Html.TextBoxFor((l) => l.Password)</td>
+                <td>@Html.ValidationMessageFor((l) => l.Password, "", new { @class = "error" })</td>
+            </tr>
+        </table>
+        <div>
+            <input type="submit" value="Login" />
+        </div>
+    }
+</section>
+
+

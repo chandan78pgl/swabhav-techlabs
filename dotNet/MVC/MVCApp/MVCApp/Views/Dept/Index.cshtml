@@ -1,0 +1,53 @@
+﻿@using MVCApp.Models.Dept
+@model DeptVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <div>
+            @using (Html.BeginForm("Index", "Dept", FormMethod.Post))
+            {
+                @Html.DropDownListFor((x) => x.Selected, new SelectList(Model.Departments, "DeptNo", "DeptName"))
+                <input type="submit" value="Apply" />
+            }
+        </div>
+        <div>
+            <h1>Department Selected is @Model.Selected</h1>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Emp No</th>
+                        <th>Emp Name</th>
+                        <th>Job</th>
+                        <th>Salary</th>
+                        <th>Dept No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model.Employees)
+                    {
+                        <tr>
+                            <td>@employee.EmpNo</td>
+                            <td>@employee.EmpName</td>
+                            <td>@employee.Job</td>
+                            <td>@employee.Salary</td>
+                            <td>@employee.DeptNo</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

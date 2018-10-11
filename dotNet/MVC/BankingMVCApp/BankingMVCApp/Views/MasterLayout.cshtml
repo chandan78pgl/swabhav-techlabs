@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @Html.ActionLink("Home", "Index", "Home")
+        @Html.ActionLink("Passbook", "Index", "Passbook")
+        @Html.ActionLink("Transaction", "Index", "Transaction")
+        @Html.ActionLink("Registration", "Index", "Registration")
+        @Html.ActionLink("Login", "Index", "Login")
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

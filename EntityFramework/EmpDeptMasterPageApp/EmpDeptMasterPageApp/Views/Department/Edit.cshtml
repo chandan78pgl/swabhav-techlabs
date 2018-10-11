@@ -1,0 +1,25 @@
+﻿@using EmpDeptMasterPageApp.Models.DepartmentModel;
+@model EditVM
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+<section>
+    <h2>This is Department Edit</h2>
+    @using (Html.BeginForm("Edit", "Department", FormMethod.Post))
+    {
+        <div>
+            Department Id: @Model.Id
+        </div>
+        <div>
+            Enter Department Name: @Html.TextBoxFor((m) => m.DName)
+        </div>
+        <div>
+            Enter Location: @Html.TextBoxFor((m) => m.Location)
+        </div>
+        <div>
+            Enter Description: @Html.TextBoxFor((m) => m.Description)
+        </div>
+        <input type="submit" value="Edit Department" />
+    }
+</section>

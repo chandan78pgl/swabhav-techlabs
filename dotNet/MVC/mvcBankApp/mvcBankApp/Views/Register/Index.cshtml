@@ -1,0 +1,48 @@
+﻿@using mvcBankApp.Models.RegistrationModel
+@model RegistrationVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+
+<h2>Register Index Page...</h2>
+<section>
+    @using (Html.BeginForm("Index", "Register", FormMethod.Post))
+    {
+        <table>
+          
+            <tr>
+                <th>Enter Account NO:</th>
+                <td>@Html.TextBoxFor((m) => m.AccountNo)</td>
+            </tr>
+            <tr>
+                <th>Enter AccountHolder Name:</th>
+                <td>@Html.TextBoxFor((m) => m.AccountHolderName)</td>
+            </tr>
+
+            <tr>
+                <th>Enter Balance:</th>
+                <td>@Html.TextBoxFor((m) => m.AccountBalance)</td>
+            </tr>
+
+            <tr>
+                <th>Enter Password:</th>
+                <td>@Html.TextBoxFor((m) => m.AccountPassword)</td>
+                <td>@Html.ValidationMessageFor((m)=>m.AccountPassword)</td>
+            </tr>
+
+            <tr>
+                <th>Confirm Password:</th>
+                <td>@Html.TextBoxFor((m) => m.AccountConfirmPass)</td>
+                <td>@Html.ValidationMessageFor((m) => m.AccountConfirmPass)</td>
+
+            </tr>
+
+
+        </table>
+            <div>
+                <input type="submit" value="Register" />
+            </div>
+    }
+</section>
+

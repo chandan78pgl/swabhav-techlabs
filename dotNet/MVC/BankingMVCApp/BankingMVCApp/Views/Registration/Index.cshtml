@@ -1,0 +1,42 @@
+﻿@using BankingMVCApp.Models.RegistrationModel;
+@model RegistrationVM
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+<section>
+    <h2>This is Registration Index</h2> 
+    @using (Html.BeginForm("Index", "Registration", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <th>Account No: </th>
+                <td>@Html.TextBoxFor((r)=>r.AccountNo)</td>
+            </tr>
+            <tr>
+                <th>Name: </th>
+                <td>@Html.TextBoxFor((r) => r.Name)</td>
+            </tr>
+            <tr>
+                <th>Balance: </th>
+                <td>@Html.TextBoxFor((r) => r.Balance)</td>
+            </tr>
+            <tr>
+                <th>Password: </th>
+                <td>@Html.TextBoxFor((r) => r.Password)</td>
+                <td>@Html.ValidationMessageFor((r)=>r.Password,"", new { @class = "error" })</td>
+            </tr>
+            <tr>
+                <th>Retype Password: </th>
+                <td>@Html.TextBoxFor((r) => r.RetypePassword)</td>
+                <td>@Html.ValidationMessageFor((r) => r.RetypePassword,"",new { @class="error"})</td>
+            </tr>
+        </table>
+        <div>
+            <input type="submit" value="Add Account"/>
+        </div>
+    }
+</section>
+
+

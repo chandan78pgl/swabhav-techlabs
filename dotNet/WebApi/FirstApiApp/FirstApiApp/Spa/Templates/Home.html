@@ -1,0 +1,29 @@
+﻿<section>
+    <div style="max-width:15%">
+        <label for="name">Enter Name: </label>
+        <input class="form-control" id="name" type="text" ng-model="contactName" />
+        <button class="btn btn-primary" ng-click="getContactsByName()">Search</button>
+        <button class="btn btn-success" ng-click="getContacts()">All Contacts</button>
+    </div>
+    <div>
+        <table class="table" style="max-width:50%">
+            <thead>
+                <tr>
+                    <th>Contact Id</th>
+                    <th>Name</th>
+                    <th>Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in results track by $index">
+                    <td>{{x["Id"]}}</td>
+                    <td>{{x["Name"]}}</td>
+                    <td>{{x["Number"]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="#Add">Add Contact</a>
+    </div>
+</section>

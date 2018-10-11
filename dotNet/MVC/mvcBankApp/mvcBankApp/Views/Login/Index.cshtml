@@ -1,0 +1,31 @@
+﻿@using mvcBankApp.Models.LoginModel
+@model LoginVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+
+<h2>Login Index page......</h2>
+<section>
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+    {
+        <table>
+
+            <tr>
+                <th>Enter Account NO:</th>
+                <td>@Html.TextBoxFor((m) =>m.AcntNo)</td>
+                <td>@Html.ValidationMessageFor((m) => m.AcntNo)</td>
+            </tr>
+           
+            <tr>
+                <th>Enter Password:</th>
+                <td>@Html.TextBoxFor((m) => m.AccountPassword)</td>
+                <td>@Html.ValidationMessageFor((m) => m.AccountPassword)</td>
+            </tr>
+        </table>
+        <div>
+            <input type="submit" value="Login" />
+        </div>
+    }
+</section>
+

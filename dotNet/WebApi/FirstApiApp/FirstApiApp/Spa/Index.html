@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/angular-route.js"></script>
+</head>
+<body ng-app="ContactApp">
+    <h2>This is the Contact Page {{name}} Page</h2>
+    
+    <a href="#/">home</a>
+
+    <section ng-view></section>
+
+    <script>
+        angular.module('ContactApp', ["ngRoute"])
+               .factory('DataService', function ($log, $http) {
+                   $log.info("inside DataService");
+
+                   var obj = {};
+
+                   obj.getAllContacts = function () {
+                       return $http.get("http://localhost:53806/api/hitech/Contacts/AllContacts")
+                   };
+
+                   obj.getContactsByName = function (name) {
+                       return $http.get("http://localhost:53806/api/hitech/Contacts/ContactByName/" + name);
+                   };
+
+                   obj.add = function (contact) {
+                       return $http.post("http://localhost:53806/api/hitech/Contacts/AddContact/", contact);
+                   };
+
+                   return obj;
+               })
+               .config(function ($routeProvider) {
+                   $routeProvider
+                       .when("/", {
+                           templateUrl: "templates/Home.html",
+                           controller: "homeController"
+                       })
+                       .when("/Add", {
+                           templateUrl: "templates/Add.html",
+                           controller: "AddController"
+                       });
+               })
+               .controller('homeController', function ($rootScope, $scope, DataService) {
+                   $scope.name = "Chandan";
+                   $scope.results;
+                   $scope.getContacts = function () {         
+                       DataService.getAllContacts()
+                               .then((response) => {
+                                   $scope.results = response.data;
+                                   console.log(response.data);
+                               });  
+                   }
+                   
+                   $scope.getContactsByName = function () {
+                       DataService.getContactsByName($scope.contactName)
+                               .then((response) => {
+                                   $scope.results = response.data;
+                                   console.log(response.data);
+                               });
+                   }
+               })
+               .controller("AddController", function ($scope, DataService) {
+                   console.log("Inside Add Controller");
+                   console.log($scope.contactName + $scope.contactNumber);
+                   $scope.addContact = function () {
+                       console.log("Inside Add Contact");
+                       var contact = {
+                           Name: $scope.contactName,
+                           Number: $scope.contactNumber
+                       };
+                       DataService.add(contact).then((response) => {
+                           console.log("Data Updated Successfully", response);
+                       });
+                   }
+               });
+    </script>
+</body>
+</html>

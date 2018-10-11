@@ -1,0 +1,41 @@
+﻿@using EmpDeptMasterPageApp.Models.EmployeeModel;
+@model EmployeeVM
+
+@{
+    ViewBag.Title = "ViewEmployee";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+<section>
+    <h2>This is ViewEmployee</h2>
+    <div>
+        <table style="border:Solid 1px">
+            <thead>
+                <tr>
+                    <th>Employee Id</th>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>Manager</th>
+                    <th>Hire Date</th>
+                    <th>Salary</th>
+                    <th>Commission</th>
+                    <th>Department Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model.Employees)
+                {
+                    <tr>
+                        <td>@employee.Id</td>
+                        <td>@employee.EmpName</td>
+                        <td>@employee.EmpJob</td>
+                        <td>@employee.EmpMGR</td>
+                        <td>@employee.EmpHireDate</td>
+                        <td>@employee.EmpSalary</td>
+                        <td>@employee.EmpComm</td>
+                        <td>@employee.EmpDepartment.Id</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

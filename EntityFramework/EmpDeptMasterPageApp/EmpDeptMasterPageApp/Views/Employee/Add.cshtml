@@ -1,0 +1,44 @@
+﻿@using EmpDeptMasterPageApp.Models.EmployeeModel;
+@model AddVM
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+<section>
+    <h2>This is Employee Add</h2>
+    @using (Html.BeginForm("Add","Employee",FormMethod.Post,new { @class="form-group"}))
+    {
+        <table>
+            <tr>
+                <td>Enter Name: </td>
+                <td>@Html.TextBoxFor((a)=>a.EmpName)</td>
+            </tr>
+            <tr>
+                <td>Enter Job: </td>
+                <td>@Html.TextBoxFor((a)=>a.EmpJob)</td>
+            </tr>
+            <tr>
+                <td>Enter Manager: </td>
+                <td>@Html.TextBoxFor((a)=>a.EmpMGR)</td>
+            </tr>
+            <tr>
+                <td>Enter HireDate: </td>
+                <td>@Html.TextBoxFor((a)=>a.EmpHireDate)</td>
+            </tr>
+            <tr>
+                <td>Enter Salary: </td>
+                <td>@Html.TextBoxFor((a)=>a.EmpSalary)</td>
+            </tr>
+            <tr>
+                <td>Enter Commission: </td>
+                <td>@Html.TextBoxFor((a)=>a.EmpComm)</td>
+            </tr>
+            <tr>
+                <td>Select Department: </td>
+                <td>@Html.DropDownListFor((a)=>a.SelectedDepartment, new SelectList(Model.Departments,"Id","DName"))</td>
+            </tr>
+        </table>
+        <hr />
+        <input type="submit" value="Add Employee" class="btn btn-danger"/>
+    }
+</section>

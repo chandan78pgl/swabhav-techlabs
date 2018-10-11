@@ -1,0 +1,23 @@
+﻿@using EmpDeptMasterPageApp.Models.DepartmentModel
+@model AddVM
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+<section>
+    <h2>This is the Add Department Page</h2>
+    @using (Html.BeginForm("Add", "Department", FormMethod.Post))
+    {
+        <div>
+            Enter Department Name: @Html.TextBoxFor((m)=>m.DName)
+        </div>
+        <div>
+            Enter Location: @Html.TextBoxFor((m) => m.Location)
+        </div>
+        <div>
+            Enter Description: @Html.TextBoxFor((m) => m.Description)
+        </div>
+        <input type="submit" value="Add Department" />
+    }
+</section>

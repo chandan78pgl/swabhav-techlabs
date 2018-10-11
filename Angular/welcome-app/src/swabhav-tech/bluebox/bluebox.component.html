@@ -1,0 +1,21 @@
+<section>
+    <div class="text-center">
+        <button class="btn btn-primary" name="btnShow" (click)="createButtons()" [disabled]="isCalled">Start Blue Box Game</button>
+    </div>
+    
+    <div style="max-width:40%;margin-left:auto;margin-right: auto ">
+        <button *ngFor="let btn of buttons" 
+                class="btn"
+                [ngStyle]="btn.btnStyle"
+                id="{{btn.id}}"
+                name="btnbox"
+                (click)="game(btn.id)"
+                [disabled]='btn.isCalled'
+                [innerHtml]="btn.id">
+        </button>
+    </div>
+    <section id="answer-section" class="text-center">
+        <h1>You Have {{guesses}} Guess</h1>
+    </section>
+    <h6>{{answer}}</h6>
+</section>

@@ -1,0 +1,32 @@
+﻿@using mvcBankApp.Models.PassbookModel;
+@model PassbookVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MasterLayout.cshtml";
+}
+<section>
+    <h2>This is Passbook Index Page</h2>
+    <h3>Showing Transaction Details for @Model.AccountNo</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Account No</th>
+                <th>Transaction Type</th>
+                <th>Amount</th>
+                <th>Transaction Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaction in Model.accountTransactions)
+            {
+                <tr>
+                    <td>@transaction.acnt.AccountNo</td>
+                    <td>@transaction.TransactionType</td>
+                    <td>@transaction.TransactionAmount</td>
+                    <td>@transaction.TransactionDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.ActionLink("Download CSV","DownloadCSV","Passbook");
+</section>

@@ -1,0 +1,22 @@
+<section>
+    Number:
+    <input type="number" [(ngModel)]="id">
+    <button name="btnFact" (click)="getFacts(id)">Get Fact</button>
+<h1>Id is {{id}}</h1>
+    <div>
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Fact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fact of facts;index as id">
+                    <td>{{id+1}}</td>
+                    <td>{{fact}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @Html.ActionLink("Home", "Index", "Home")
+        @Html.ActionLink("Department","Index","Department")
+        @Html.ActionLink("Employee","Index","Employee")
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

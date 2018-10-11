@@ -23,7 +23,7 @@ namespace TransactionApp
         {
             InitializeDatabaseConnection();
         }
-
+        
         public void DoTransaction(Customer customer, Merchant merchant,int amount)
         {
             

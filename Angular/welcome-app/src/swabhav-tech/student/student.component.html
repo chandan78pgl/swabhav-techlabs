@@ -1,0 +1,24 @@
+<section class="container">
+    <section>
+        <h1>Using Expression</h1>
+        <p>first Name is {{Student['name']}}</p>
+        <p>location is {{Student['location']}}</p>
+        <p [style.background-color]="calculateColor(7.6)" [innerHtml]="7.6" ></p>
+    </section>
+    <section>
+        <h1>Using Property Binding</h1>
+        <p [innerHtml]="Student['name']"></p>
+        <p [innerHtml]="Student['location']"></p>
+        <p [innerHtml]="Student['cgpa']"></p>
+        <img [src]="Student['photo']" alt="No Image Available" [height]="imageHeight" [width]="imageWidth">
+    </section>
+    <div>
+        <button name="btnLoadStudent" (click)="loadStudents()">Load Students</button>
+    </div>
+    <section *ngFor="let student of Students">
+        <h1 [innerHtml]="student['name']"></h1>
+        <p [innerHtml]="student['location']"></p>
+        <p [style.background-color]="calculateColor(student['cgpa'])" [innerHtml]="student['cgpa']"></p>
+        <img [src]="student['photo']" alt="No Image Available" [height]="imageHeight" [width]="imageWidth">
+    </section>
+</section>

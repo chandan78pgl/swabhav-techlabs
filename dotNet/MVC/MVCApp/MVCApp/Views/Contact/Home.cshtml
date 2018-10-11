@@ -1,0 +1,46 @@
+﻿@using MVCApp.Models.Contact
+@model ContactVM
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <div>
+        @Html.ActionLink("Add", "Add", "Contact")
+        @Html.ActionLink("Display", "Home", "Contact")
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Contact No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var contact in Model.Contacts)
+                {
+                    <tr>
+                        <td>@contact.Id</td>
+                        <td>@contact.ContactNo</td>
+                        <td>@contact.FName</td>
+                        <td>@contact.LName</td>
+                        <td>@contact.Email</td>
+                        <td>@Html.ActionLink("Edit","Edit",new { id = contact.Id })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
