@@ -10,17 +10,19 @@ import { TwoWayComponent } from '../swabhav-tech/twoway/TwoWayComponent';
 import { MathService } from '../swabhav-tech/MathService';
 import { NumberService } from '../swabhav-tech/NumberService';
 import { NumberComponent } from '../swabhav-tech/numbersApi/number.component';
+import { QuestionBankService } from '../swabhav-tech/services/questionBankService';
+import { QuestionBankComponent } from '../swabhav-tech/questionBank/questionbank.component';
 
 @NgModule({
   declarations: [
-    WelcomeComponent, StudentComponent,BlueBox,TwoWayComponent,NumberComponent
+    WelcomeComponent, StudentComponent,BlueBox,TwoWayComponent,NumberComponent,QuestionBankComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [MathService,NumberService],
+  providers: [MathService,NumberService,QuestionBankService],
   bootstrap: [WelcomeComponent]
 })
 export class AppModule { }

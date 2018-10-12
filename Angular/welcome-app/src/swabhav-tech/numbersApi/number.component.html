@@ -1,8 +1,8 @@
 <section>
-    Number:
-    <input type="number" [(ngModel)]="id">
+    <label for="numberinput" id="numberinputlabel">Number: </label>
+    <input id="numberinput" type="number" [(ngModel)]="id">
     <button name="btnFact" (click)="getFacts(id)">Get Fact</button>
-<h1>Id is {{id}}</h1>
+    <h1>Id is {{id}}</h1>
     <div>
         <table class="table-bordered">
             <thead>

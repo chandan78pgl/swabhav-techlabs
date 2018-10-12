@@ -1,0 +1,24 @@
+<section class="text-center">
+    <h1>Welcome to Question Bank</h1>
+    <section id="questionSection">
+        <h2>{{question.qId}}. {{question.qDescription}}</h2>
+        <div class="container text-left" style="max-width:200px;margin:auto">
+            <div *ngFor="let option of question.qOptions;index as i">
+                <input [(ngModel)]="selectedAnswer" [ngStyle]="{'margin':'10px'}" type="radio" id="option{{i+1}}" name="options" [value]="option">
+                <label for="option{{i+1}}">{{option}}</label>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-primary" (click)="nextQuestion()">Next</button>
+            <button class="btn btn-secondary" (click)="calculateResult()">Generate Result</button>
+        </div>
+    </section>
+    <section id="answerSection">
+     <h3>{{selectedAnswer}}</h3> 
+    </section>
+    <section id="resultSection">
+        <h1>{{result}}</h1>
+        <canvas #myCanvas width="600px" height="600px" style="border: 1px solid #b3b3b3"></canvas>
+    </section>
+
+</section>

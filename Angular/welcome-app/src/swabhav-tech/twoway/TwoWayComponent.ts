@@ -10,41 +10,43 @@ export class TwoWayComponent{
     lastName:string;
     inputNumber:number;
     result:string;
+    inputColor:string;
 
     constructor(private _mathService:MathService){
         this.firstName="chandan";
-        //this.result="The Result is";
+        this.result="Enter number for result";
+        
+        
     }
 
     firstNameChanged(event){
         this.firstName=event;
     }
 
-    checkPrimeNumber(value:number){
-        if(this._mathService.isPrime(value)){
-            this.result=value+" is Prime";
-            return;
-        }
-        this.result=value+" is Not Prime";
-        return;
-    }
+    // checkPrimeNumber(value:number){
+    //     if(this._mathService.isPrime(value)){
+    //         this.result=value+" is Prime";
+    //         return;
+    //     }
+    //     this.result=value+" is Not Prime";
+    //     return;
+    // }
 
-    checkAsyncPrimeNumber(value:number){
+    checkAsyncPrimeNumber(){
         console.log("functioncalled");
-        this._mathService.isPrimeAsync(value).then((success)=>{
+       
+        this._mathService.isPrimeAsync(this.inputNumber).then((success)=>{
 
-            this.updateResult(value+" is prime");
+            this.result=this.inputNumber+" is prime";
+            this.inputColor="lightgreen";
             console.log(this.result);
-
+            
         }).catch((fail)=>{
-
-            this.updateResult(value+" is Not Prime");
+            this.result=this.inputNumber+" is Not prime";
             console.log(this.result);
-
+            this.inputColor="red";
+            
         });
     }
 
-    updateResult(text:string){
-        this.result=text;
-    }
 }
