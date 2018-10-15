@@ -12,10 +12,15 @@ import { NumberService } from '../swabhav-tech/NumberService';
 import { NumberComponent } from '../swabhav-tech/numbersApi/number.component';
 import { QuestionBankService } from '../swabhav-tech/services/questionBankService';
 import { QuestionBankComponent } from '../swabhav-tech/questionBank/questionbank.component';
+import { SummaryComponent } from 'src/swabhav-tech/SummaryPipe/summary.component';
+import { SummaryPipe } from 'src/swabhav-tech/SummaryPipe/SummaryPipe';
+import { GenderToColorPipe } from 'src/swabhav-tech/studentApi/GenderToColorPipe';
+import { StudentApiComponent } from 'src/swabhav-tech/studentApi/studentApi.component';
 
 @NgModule({
   declarations: [
-    WelcomeComponent, StudentComponent,BlueBox,TwoWayComponent,NumberComponent,QuestionBankComponent
+    WelcomeComponent, StudentComponent,BlueBox,TwoWayComponent,NumberComponent,QuestionBankComponent,
+    SummaryComponent, SummaryPipe,GenderToColorPipe,StudentApiComponent
   ],
   imports: [
     BrowserModule,

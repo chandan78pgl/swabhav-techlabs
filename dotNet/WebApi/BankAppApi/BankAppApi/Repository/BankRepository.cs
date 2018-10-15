@@ -1,6 +1,7 @@
 ﻿using BankAppApi.Models.BankModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -24,7 +25,32 @@ namespace BankAppApi.Repository
 
         public void DoTransaction(AccountTransaction transaction, int accountNo)
         {
-            throw new NotImplementedException();
+            using (DbContextTransaction dbTransaction = _bankDBContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    Account account = _bankDBContext.BankAccounts.Where((a) => a.AccountNo == accountNo).Single();
+
+                    if (transaction.TransactionType == "Deposit")
+                    {
+                        account.AccountBalance = account.AccountBalance + transaction.TransactionAmount;
+                    }
+                    else if (transaction.TransactionType == "Withdraw")
+                    {
+                        account.AccountBalance = account.AccountBalance - transaction.TransactionAmount;
+                    }
+
+                    transaction.account = account;
+                    _bankDBContext.AccountTransactions.Add(transaction);
+                    _bankDBContext.SaveChanges();
+                    dbTransaction.Commit();
+                }
+                catch (Exception e)
+                {
+                    dbTransaction.Rollback();
+                    throw e;
+                }
+            }
         }
 
         public List<Account> GetAllAccounts()

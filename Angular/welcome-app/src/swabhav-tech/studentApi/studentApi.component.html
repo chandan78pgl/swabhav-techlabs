@@ -1,0 +1,60 @@
+<section>
+    <h2>Student Details.</h2>
+    <table class="table">
+        <tr>
+            <td>
+                <section>
+                    <div>
+                        <label for="nameinput"></label>
+                        <input id="nameinput" type="text" [(ngModel)]="studentName" placeholder="Enter Name">
+                    </div>
+                    <div>
+                        <label for="locationinput"></label>
+                        <input id="locationinput" type="text" [(ngModel)]="studentLocation" placeholder="Enter Location">
+                    </div>
+                    <div>
+                        <label for="genderselect">Select Gender: </label>
+                        <input id="radioinputmale" name="gender" type="radio" [(ngModel)]="studentGender" value="Male">Male
+                        <input id="radioinputfemale" name="gender" type="radio" [(ngModel)]="studentGender" value="Female">Female
+                    </div>
+                    <div>
+                        <label for="descriptionArea"></label>
+                        <textarea name="description" id="descriptionArea" [(ngModel)]="studentDescription" cols="30"
+                            rows="5">Enter Description Here</textarea>
+                    </div>
+                    <button (click)="addStudent()">Add Student</button>
+                    <button (click)="display()">Display</button>
+                </section>
+
+            </td>
+            <td>
+                <section id="displaySection">
+                    <h4>{{studentName}}</h4>
+                    <h4>{{studentLocation}}</h4>
+                    <h4>{{studentGender}}</h4>
+                    <h4>{{studentDescription}}</h4>
+                </section>
+            </td>
+        </tr>
+    </table>
+    <section [hidden]="displayTable">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Gender</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of Students">
+                    <td>{{student.name}}</td>
+                    <td>{{student.location}}</td>
+                    <td [ngStyle]="{'background-color':student.gender | genderToColorPipe}">{{student.gender}}</td>
+                    <td>{{student.description | summaryPipe: 100}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</section>
