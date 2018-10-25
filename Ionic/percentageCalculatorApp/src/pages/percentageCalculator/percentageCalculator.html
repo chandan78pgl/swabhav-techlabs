@@ -1,0 +1,100 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>
+            Percentage Calculator
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-card color="grey">
+        <ion-card-content>
+            <ion-grid>
+                <ion-row align-items-center>
+                    <ion-col col-auto>
+                        <h1 ion-text>what is</h1>
+                    </ion-col>
+                    <ion-col col-auto>
+                        <ion-input text-right type="number" [(ngModel)]="firstPercentInput" (ngModelChange)="calculateAnswer('first')"></ion-input>
+                    </ion-col>
+                    <ion-col col-auto>
+                        <h1 ion-text>% of</h1>
+                    </ion-col>
+                    <ion-col col-auto>
+                        <ion-input text-right type="number" [(ngModel)]="firstNumberInput" (ngModelChange)="calculateAnswer('first')"></ion-input>
+                    </ion-col>
+                    <ion-col col-auto>
+                        <h1 ion-text>?</h1>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-badge padding style="min-width:4em">{{firstAnswerDisplay}}</ion-badge>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+
+    </ion-card>
+    <ion-card color="grey">
+        <ion-card-content>
+            <ion-grid>
+                <ion-row align-items-center>
+                    <ion-col col-auto>
+                        <ion-input text-right type="number" [(ngModel)]="secondInput" (ngModelChange)="calculateAnswer('second')"></ion-input>
+                    </ion-col>
+                    <ion-col col-auto>
+                        <h1 text-center ion-text>is what % of</h1>
+                    </ion-col>
+                    <ion-col col-auto>
+                        <ion-input text-right type="number" [(ngModel)]="secondNumberInput" (ngModelChange)="calculateAnswer('second')"></ion-input>
+                    </ion-col>
+                    <ion-col col-auto>
+                        <h1 ion-text>?</h1>
+                    </ion-col>
+
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-badge padding style="min-width:4em">{{secondAnswerDisplay}}</ion-badge>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card color="grey">
+        <ion-card-content>
+            <ion-grid>
+                <ion-row align-items-center>
+                    <ion-col col-auto>
+                        <h1 ion-text>What is the percentage increase/decrease from</h1>
+                    </ion-col>
+                    <ion-col col-auto>
+                        <ion-input text-right type="number" [(ngModel)]="thirdFromInput" (ngModelChange)="calculateAnswer('third')"></ion-input>
+                    </ion-col>
+                    <ion-col col-auto>
+                        <h1 text-center ion-text>to</h1>
+                    </ion-col>
+                    <ion-col col-auto>
+                        <ion-input text-right type="number" [(ngModel)]="thirdToInput" (ngModelChange)="calculateAnswer('third')"></ion-input>
+                    </ion-col>
+                    <ion-col col-auto>
+                        <h1 ion-text>?</h1>
+                    </ion-col>
+
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-badge padding style="min-width:4em">{{thirdAnswerDisplay}}</ion-badge>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+
+
+
+
+
+        </ion-card-content>
+    </ion-card>
+</ion-content>

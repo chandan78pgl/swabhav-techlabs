@@ -1,0 +1,14 @@
+<section>
+    <h1>This is the Edit Page</h1>
+    <div class="form-group">
+        <div>
+            <label for="editNameInput">Enter Name: </label>
+            <input class="form-control" id="editNameInput" type="text" placeholder="Enter Name" [(ngModel)]="name">
+        </div>
+        <div>
+            <label for="editNumberInput">Enter Number: </label>
+            <input class="form-control" id="editNumberInput" type="text" placeholder="Enter Number" [(ngModel)]="mobileNumber">
+        </div>
+    </div>
+    <button class="btn btn-info" (click)="editContact()">Edit Contact</button>
+</section>

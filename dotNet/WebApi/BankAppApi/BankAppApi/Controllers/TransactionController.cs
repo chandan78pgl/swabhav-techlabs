@@ -17,8 +17,6 @@ namespace BankAppApi.Controllers
         public IHttpActionResult PostTransaction(AccountTransaction transaction)
         {
             transaction.TransactionDate = DateTime.Now;
-            
-            
             _bankRepository.DoTransaction(transaction, transaction.account.AccountNo);
             return Ok("Transaction Successfull");
         }

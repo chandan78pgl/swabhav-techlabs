@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>
+            Expense Details Edit
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="delete()">
+                <ion-icon name="trash"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="close()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="update()">
+                <ion-icon name="checkmark"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-item>
+        <ion-label>Category</ion-label>
+        <ion-select [(ngModel)]="expense.category">
+            <ion-option value="Travel">Travel</ion-option>
+            <ion-option value="Food">Food</ion-option>
+            <ion-option value="Shopping">Shopping</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="expense.date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-input type="text" [(ngModel)]="expense.description"></ion-input>
+    </ion-item>
+</ion-content>

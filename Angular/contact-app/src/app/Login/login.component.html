@@ -1,0 +1,14 @@
+<section>
+    <h1>This is the Login Page</h1>
+    <div class="form-group">
+        <div>
+            <label for="usernameInput">Username: </label>
+            <input class="form-control" id="usernameInput" type="text" placeholder="Enter Name" [(ngModel)]="username">
+        </div>
+        <div>
+            <label for="passwordInput">Password: </label>
+            <input class="form-control" id="passwordInput" type="text" placeholder="Enter Password" [(ngModel)]="password">
+        </div>
+        <button class="btn btn-primary" (click)="authUser()">Login</button>
+    </div>
+</section>

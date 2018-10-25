@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title no-padding>
+            {{navHeading}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form action="" #frm="ngForm">
+        <ion-item>
+            <ion-input name="titleInput" type="text" placeholder="Title" [(ngModel)]="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-textarea name="descriptionInput" placeholder="Description" [(ngModel)]="description" required></ion-textarea>
+        </ion-item>
+    </form>
+    <div padding>
+        <button ion-button block round (click)="save()" [disabled]="!frm.valid">Save</button>
+    </div>
+</ion-content>

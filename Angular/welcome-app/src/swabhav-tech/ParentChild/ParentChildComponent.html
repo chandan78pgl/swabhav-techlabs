@@ -1,0 +1,6 @@
+<section>
+    <h1>{{stateOfButton}}</h1>
+    <h2>{{showRating}}</h2>
+    <st-toggle-btn [textContent]='"Hitech"' [onStateColor]='"yellow"' [offStateColor]='"blue"' (stateChanged)="handler($event)"></st-toggle-btn>
+    <st-stars [rating]="4.5" (displayRating)="ratingHandler($event)"></st-stars>
+</section>

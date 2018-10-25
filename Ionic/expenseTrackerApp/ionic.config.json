@@ -1,0 +1,7 @@
+{
+  "name": "expenseTrackerApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

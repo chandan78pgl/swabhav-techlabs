@@ -1,0 +1,11 @@
+<section class="form-group">
+    <div>
+        <label for="nameInput">Enter Name: </label>
+        <input class="form-control" id="nameInput" [(ngModel)]="contactName" type="text" placeholder="Enter Name">
+    </div>
+    <div>
+        <label for="numberInput">Enter Number: </label>
+        <input class="form-control" id="numberInput" [(ngModel)]="contactNumber" type="number" placeholder="Enter Number">
+    </div>
+    <button class="btn btn-danger" (click)="addContact()"> Add Contact</button>
+</section>

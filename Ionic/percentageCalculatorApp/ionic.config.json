@@ -1,0 +1,7 @@
+{
+  "name": "percentageCalculatorApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,26 @@
+<section>
+    <h1>This is Contact Component - {{loggedInUser}}</h1>
+    <div class="text-center">
+        <button class="btn btn-primary" (click)="getContacts()">Display Contacts</button>
+        <a class="btn btn-danger" routerLink="/AddContact">AddContact</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contact of contacts">
+                <td>{{contact.contactName}}</td>
+                <td>{{contact.mobileNumber}}</td>
+                <td>
+                    <a class="glyphicon glyphicon-edit" [routerLink]="['/Edit']" [queryParams]="{name:contact.contactName}">edit</a>
+                    <a class="glyphicon glyphicon-remove" [routerLink]="['/Contact']" (click)="deleteContact(contact)">delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

@@ -1,0 +1,46 @@
+<section class="container">
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Product Detail: {{product.ProductName}}</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <table>
+                        <tr>
+                            <td style="padding-right:4em">Name: </td>
+                            <td>{{product.ProductName}}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right:4em">Code: </td>
+                            <td>{{product.ProductCode}}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right:4em">Description: </td>
+                            <td>{{product.Description}}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right:4em">Availability: </td>
+                            <td>{{product.ReleaseDate}}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right:4em">Price: </td>
+                            <td>{{product.Price | currency}}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right:4em">5 Star Rating: </td>
+                            <td>
+                                <st-stars [rating]="product.StarRating"></st-stars>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <img class="img img-responsive center-block" *ngIf="product.ImageUrl != null" [src]="product.ImageUrl" alt="no image">
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a class="btn btn-primary" routerLink="/ProductList"><span class="glyphicon glyphicon-chevron-left"></span>Back</a>
+        </div>
+    </div>
+</section>

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpModule } from "@angular/http";
 
@@ -16,18 +16,22 @@ import { SummaryComponent } from 'src/swabhav-tech/SummaryPipe/summary.component
 import { SummaryPipe } from 'src/swabhav-tech/SummaryPipe/SummaryPipe';
 import { GenderToColorPipe } from 'src/swabhav-tech/studentApi/GenderToColorPipe';
 import { StudentApiComponent } from 'src/swabhav-tech/studentApi/studentApi.component';
+import { ParentChildComponent } from 'src/swabhav-tech/ParentChild/ParentChildComponent';
+import { ToggleBtnComponent } from 'src/swabhav-tech/ParentChild/ToggleBtn/ToggleBtnComponent';
+import { StarRatingComponent } from 'src/swabhav-tech/ParentChild/StarRating/StarRatingComponent';
 
 @NgModule({
   declarations: [
-    WelcomeComponent, StudentComponent,BlueBox,TwoWayComponent,NumberComponent,QuestionBankComponent,
-    SummaryComponent, SummaryPipe,GenderToColorPipe,StudentApiComponent
+    WelcomeComponent, StudentComponent, BlueBox, TwoWayComponent, NumberComponent, QuestionBankComponent,
+    SummaryComponent, SummaryPipe, GenderToColorPipe, StudentApiComponent, ParentChildComponent,
+    ToggleBtnComponent,StarRatingComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [MathService,NumberService,QuestionBankService],
+  providers: [MathService, NumberService, QuestionBankService],
   bootstrap: [WelcomeComponent]
 })
 export class AppModule { }

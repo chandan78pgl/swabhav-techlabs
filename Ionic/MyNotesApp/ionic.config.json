@@ -1,0 +1,7 @@
+{
+  "name": "MyNotesApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>
+            Expense Details Add
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="close()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="addExpense()" [disabled]="!frm.valid">
+                <ion-icon name="checkmark"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <form action="" #frm="ngForm">
+        <ion-item>
+            <ion-label>Id</ion-label>
+            <ion-input name="expenseId" type="number" [(ngModel)]="expenseId" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Category</ion-label>
+            <ion-select [(ngModel)]="expenseCategory" name="expenseCategory" required>
+                <ion-option value="Travel">Travel</ion-option>
+                <ion-option value="Food">Food</ion-option>
+                <ion-option value="Shopping">Shopping</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Date</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="expenseDate" name="expenseDate" required></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>Description</ion-label>
+            <ion-input type="text" [(ngModel)]="expenseDescription" name="expenseDescription" required></ion-input>
+        </ion-item>
+    </form>
+</ion-content>

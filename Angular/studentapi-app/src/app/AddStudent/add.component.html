@@ -1,0 +1,23 @@
+<section class="container" style=" margin: auto;max-width:400px">
+    <div>
+        <label for="studentRollNo">RollNo: </label>
+        <input class="form-control" id="studentRollNo" type="number" [(ngModel)]="student_rollNo" placeholder="Enter Student Id">
+    </div>
+    <div>
+        <label for="studentName">Name: </label>
+        <input class="form-control" id="studentName" type="text" [(ngModel)]="student_name" placeholder="Enter Student Name">
+    </div>
+    <div>
+        <label for="studentAge">Age: </label>
+        <input class="form-control" id="studentAge" type="number" [(ngModel)]="student_age" placeholder="Enter Student Age">
+    </div>
+    <div>
+        <label for="studentEmail">Email: </label>
+        <input class="form-control" id="studentEmail" type="email" [(ngModel)]="student_email" placeholder="Enter Student Email">
+    </div>
+    <div>
+        <label for="studentDate">Date: </label>
+        <input class="form-control" id="studentDate" type="date" [(ngModel)]="student_date" placeholder="Enter Date">
+    </div>
+    <button name="add" id="add" class="btn btn-secondary" (click)="addStudent()" role="button">Add</button>
+</section>

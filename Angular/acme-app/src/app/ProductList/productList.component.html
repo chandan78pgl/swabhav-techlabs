@@ -1,0 +1,43 @@
+<section class="container">
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Product List</div>
+        <div class="panel-body">
+            <div>
+                <label for="filterInput">Filter By:</label>
+                <input style="margin-left: 3em" type="text" id="filterInput" placeholder="search" [(ngModel)]="searchString" (ngModelChange)="searchProducts()">
+                <h2>Filtered By: {{searchString}}</h2>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><button class="btn btn-primary" (click)="showImage()" [innerHtml]="btnText"></button></th>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>5 Star Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of Products" [routerLink]="['ProductDetails',product.ProductId]">
+                        <td>
+                            <span [hidden]="imageShow">
+                                <img class="img img-responsive center-block" [src]="product.ImageUrl" alt="" height=50px width=50px>
+                            </span>
+                        </td>
+                        <td style="vertical-align: middle">
+                            <a [routerLink]="['ProductDetails',product.ProductId]">{{product.ProductName}}</a>
+                        </td>
+                        <td style="vertical-align: middle">{{product.ProductCode}}</td>
+                        <td style="vertical-align: middle">{{product.ReleaseDate}}</td>
+                        <td style="vertical-align: middle">{{product.Price | currency}}</td>
+                        <td style="vertical-align: middle">
+                            <st-stars [rating]="product.StarRating"></st-stars>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
