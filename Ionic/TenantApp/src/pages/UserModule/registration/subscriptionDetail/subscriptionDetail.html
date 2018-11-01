@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Subscription Details</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form #frm="ngForm" action="">
+        <ion-list>
+            <ion-item>
+                <ion-label>SaaS/OnPremise</ion-label>
+                <ion-select name="subscriptionType" [(ngModel)]="subscriptionType" required>
+                    <ion-option value="Saas">SaaS</ion-option>
+                    <ion-option value="OnPremise">OnPremise</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label inline>No of Named User</ion-label>
+                <ion-input text-right type="number" name="noOfUsers" [(ngModel)]="noOfUsers" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Modules</ion-label>
+                <ion-select name="modules" multiple="true" [(ngModel)]="Modules" required>
+                    <ion-option>Air Freight</ion-option>
+                    <ion-option>Sea Freight</ion-option>
+                    <ion-option>Road Freight</ion-option>
+                    <ion-option>Warehouse</ion-option>
+                    <ion-option>Contract</ion-option>
+                    <ion-option>Billing</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>Services</ion-label>
+                <ion-select name="services" multiple="true" [(ngModel)]="Services" required>
+                    <ion-option>Online Trainging</ion-option>
+                    <ion-option>OnSite Trainging</ion-option>
+                    <ion-option>Additional 5 Days Training</ion-option>
+                    <ion-option>24 x 7 Support</ion-option>
+                    <ion-option>Support on phone</ion-option>
+                    <ion-option>No Support</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+    </form>
+</ion-content>
+<ion-footer padding>
+    <button ion-button block round (click)="addSubscriptionDetails()" [disabled]="!frm.valid">
+        Submit For Approval
+    </button>
+</ion-footer>

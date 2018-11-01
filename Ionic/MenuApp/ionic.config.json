@@ -1,0 +1,7 @@
+{
+  "name": "MenuApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

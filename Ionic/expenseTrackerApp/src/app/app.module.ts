@@ -11,7 +11,7 @@ import { ExpenseDetails } from '../pages/Details/ExpenseDetails';
 import { ExpenseAdd } from '../pages/AddExpense/ExpenseAdd';
 import { Login } from '../pages/Login/login';
 import { AuthService } from '../services/AuthService';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     MyApp,
@@ -22,6 +22,7 @@ import { AuthService } from '../services/AuthService';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

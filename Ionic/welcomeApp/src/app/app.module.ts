@@ -8,13 +8,17 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NameMatcher } from '../pages/nameMatcher/nameMatcher';
 import { Contacts } from '@ionic-native/contacts';
+import { About } from '../pages/about/about';
+import { Career } from '../pages/career/career';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    NameMatcher
+    NameMatcher,
+    About,
+    Career
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,9 @@ import { Contacts } from '@ionic-native/contacts';
   entryComponents: [
     MyApp,
     HomePage,
-    NameMatcher
+    NameMatcher,
+    About,
+    Career
   ],
   providers: [
     StatusBar,

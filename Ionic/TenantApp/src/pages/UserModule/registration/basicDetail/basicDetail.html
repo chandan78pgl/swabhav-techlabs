@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Basic Details</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <form #frm="ngForm" action="">
+        <ion-list>
+            <h3 ion-text>Company Details</h3>
+            <ion-item>
+                <ion-label floating>Customer Name</ion-label>
+                <ion-input type="text" name="customerName" [(ngModel)]="customerName" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>street</ion-label>
+                <ion-input type="text" name="street" [(ngModel)]="street" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" name="city" [(ngModel)]="city" placeholder="City" required></ion-input>
+                <ion-input type="text" name="state" [(ngModel)]="state" placeholder="State/Province" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="number" name="zipcode" [(ngModel)]="zipCode" placeholder="Zip Code" required></ion-input>
+                <ion-input type="text" name="country" [(ngModel)]="country" placeholder="Country" required></ion-input>
+                <ion-icon name="search" item-end></ion-icon>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Website URL</ion-label>
+                <ion-input type="text" name="weburl" [(ngModel)]="weburl" required></ion-input>
+            </ion-item>
+
+            <h3 ion-text>Primary Contact</h3>
+
+            <ion-item>
+                <ion-label stacked>Contact Person</ion-label>
+                <ion-input type="text" name="firstName" [(ngModel)]="firstName" placeholder="First Name" required></ion-input>
+                <ion-input type="text" name="lastName" [(ngModel)]="lastName" placeholder="Last Name" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Mobile</ion-label>
+                <ion-input type="number" name="mobile" [(ngModel)]="mobile" name="phoneNumber" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input type="email" name="email" [(ngModel)]="email" required></ion-input>
+            </ion-item>
+            <h3>Currency</h3>
+            <ion-item>
+                <ion-label>Base Currency</ion-label>
+                <ion-select name="currency" [(ngModel)]="currency" required>
+                    <ion-option value="&#8377;">&#8377;</ion-option>
+                    <ion-option value="&euro;">&euro;</ion-option>
+                    <ion-option value="&#36;">&#36;</ion-option>
+                    <ion-option value="&#163;">&#163;</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+    </form>
+</ion-content>
+<ion-footer padding>
+    <button ion-button block round (click)="addUserDetails()" [disabled]="!frm.valid">
+        <ion-icon name="arrow-round-forward"></ion-icon>
+    </button>
+</ion-footer>

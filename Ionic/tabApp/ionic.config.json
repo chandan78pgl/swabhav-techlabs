@@ -1,0 +1,7 @@
+{
+  "name": "tabApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
